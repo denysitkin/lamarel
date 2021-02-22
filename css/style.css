@@ -126,6 +126,10 @@ body .touch .sub-sub-menu__list .open {
   z-index: 3;
 }
 
+.header.active {
+  background-color: #F3F3F3;
+}
+
 .header-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -155,6 +159,10 @@ ul .sub-menu__list {
 
 .menu {
   font-family: "Scada", sans-serif;
+}
+
+.menu.active {
+  opacity: 1;
 }
 
 .menu a {
@@ -368,6 +376,10 @@ ul .sub-menu__list {
           align-items: center;
 }
 
+.header-adapt.active {
+  opacity: 1;
+}
+
 .header-cabinet a {
   border: 2px solid #2CC9CC;
   padding: 17px 25px;
@@ -422,9 +434,66 @@ ul .sub-menu__list {
 }
 
 @media (max-width: 1350px) {
+  .header-adapt {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    width: 100%;
+  }
+
+  .menu {
+    min-width: 503px;
+  }
+
+  .header-phone {
+    display: none;
+  }
+
+  .header-content__logo {
+    font-size: 15px;
+    padding-right: 50px;
+  }
+
+  .header-content__logo.active {
+    color: #020A17;
+  }
+
+  .header-cabinet {
+    font-size: 15px;
+  }
+
+  .menu__list > li {
+    margin: 0;
+  }
+}
+
+@media (max-width: 1094px) {
+  .menu__link {
+    font-size: 16px;
+  }
+
+  .menu {
+    min-width: 460px;
+  }
+
+  .header-cabinet {
+    font-size: 13px;
+  }
+
+  .header-lang {
+    font-size: 15px;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
   .header-content__menu {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+  }
+
+  .header-cabinet {
+    font-size: 15px;
   }
 
   .header-phone {
@@ -449,16 +518,10 @@ ul .sub-menu__list {
     width: 100%;
   }
 
-  .menu__list > li {
-    margin: 0;
-  }
-}
-
-@media (max-width: 1024px) {
   .header {
     padding-top: 30px;
     overflow: auto;
-    background-color: #F3F3F3;
+    background-color: none;
   }
 
   .header-content__menu a {
@@ -472,6 +535,7 @@ ul .sub-menu__list {
     right: 30px;
     width: 30px;
     height: 20px;
+    z-index: 100;
   }
 
   .menu__icon::before,
@@ -498,10 +562,50 @@ ul .sub-menu__list {
     width: 100%;
     height: 2px;
     top: 9px;
+    -webkit-transition: all .2s ease 0s;
+    -o-transition: all .2s ease 0s;
+    transition: all .2s ease 0s;
+  }
+
+  .menu__icon.active::before {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    top: 9px;
+    background-color: #020A17;
+    -webkit-transition: -webkit-transform .2s ease 0s;
+    transition: -webkit-transform .2s ease 0s;
+    -o-transition: transform .2s ease 0s;
+    transition: transform .2s ease 0s;
+    transition: transform .2s ease 0s, -webkit-transform .2s ease 0s;
+  }
+
+  .menu__icon.active::after {
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    bottom: 9px;
+    background-color: #020A17;
+    -webkit-transition: -webkit-transform .2s ease 0s;
+    transition: -webkit-transform .2s ease 0s;
+    -o-transition: transform .2s ease 0s;
+    transition: transform .2s ease 0s;
+    transition: transform .2s ease 0s, -webkit-transform .2s ease 0s;
+  }
+
+  .menu__icon.active span {
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
+    background-color: #020A17;
   }
 
   .header-lang a {
     color: #020A17;
+  }
+
+  .header-phone {
+    display: block;
   }
 
   .header-phone a {
@@ -514,6 +618,10 @@ ul .sub-menu__list {
 
   .header-cabinet a {
     color: #020A17;
+  }
+
+  .menu {
+    min-width: auto;
   }
 
   .white {
@@ -540,23 +648,20 @@ ul .sub-menu__list {
   .header-content {
     width: 100%;
     height: 100%;
-    background-color: #F3F3F3;
-    z-index: -5;
   }
 
   .header-content__logo {
     position: absolute;
     top: 30px;
-    left: 20px;
-    color: #020A17;
   }
 
   .menu {
     width: 100%;
+    opacity: 0;
   }
 
   .menu-container {
-    width: 100%;
+    padding-top: 150px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -570,8 +675,6 @@ ul .sub-menu__list {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    position: absolute;
-    top: 330px;
     text-align: center;
   }
 
@@ -590,7 +693,8 @@ ul .sub-menu__list {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin-top: 100px;
+    margin-top: 50px;
+    opacity: 0;
   }
 
   .a-black {

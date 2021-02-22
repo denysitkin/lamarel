@@ -26,3 +26,9 @@ if(isMobile.any()) {
 } else {
     body.classList.add('mouse');
 }
+
+$(document).ready(function() {
+    $('.menu__icon').click(function(event) {
+        $('.menu__icon, .menu, .header, .menu, .header-adapt, .header-content__logo').toggleClass('active');
+    });
+});
